@@ -1,0 +1,12 @@
+{
+	"folders":
+	[
+		{
+			"path": ".",
+      "folder_exclude_patterns":
+      ["typings"],
+      "file_exclude_patterns":
+      ["app/*.js", "app/*.js.map"]
+		}
+	]
+}
