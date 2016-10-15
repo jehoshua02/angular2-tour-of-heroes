@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Hero } from './hero';
 import { HeroService } from './hero.service';
 
 @Component({
   selector: 'my-app',
-  providers: [HeroService],
   template: `
     <h1>{{title}}</h1>
     <h2>My Heroes</h2>
@@ -65,7 +65,8 @@ import { HeroService } from './hero.service';
       margin-right: .8em;
       border-radius: 4px 0 0 4px;
     }
-  `]
+  `],
+  providers: [HeroService]
 })
 export class AppComponent implements OnInit {
   title = 'Tour of Heroes';
@@ -74,12 +75,12 @@ export class AppComponent implements OnInit {
 
   constructor(private heroService: HeroService) { }
 
-  ngOnInit(): void {
-    this.getHeroes();
+  getHeroes(): void {
+    this.heroService.getHeroes().then(heroes => this.heroes = heroes);
   }
 
-  getHeroes(): void {
-    this.heroes = this.heroService.getHeroes();
+  ngOnInit(): void {
+    this.getHeroes();
   }
 
   onSelect(hero: Hero): void {
